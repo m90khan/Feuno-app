@@ -51,6 +51,7 @@ app.listen(app.get('port'), () => {
 app.use((request, response, next) => {
   response.locals.ctx = {
     prismicH,
+    handleLinkResolver,
   };
 
   // response.locals.ctx = {
@@ -76,38 +77,57 @@ app.use((request, response, next) => {
 app.get('/', async (request, response) => {
   const document = await client.getSingle('home');
   const meta = await client.getSingle('meta');
+  const preloader = await client.getSingle('preloader');
 
   const { data: home } = document;
 
   response.render('pages/home', {
     home,
     meta,
+    preloader,
   });
 });
 
 app.get('/about', async (request, response) => {
   const document = await client.getSingle('about');
   const meta = await client.getSingle('meta');
+  const preloader = await client.getSingle('preloader');
 
   const { data: about } = document;
   console.log(about);
   response.render('pages/about', {
     about,
     meta,
+    preloader,
   });
 });
 app.get('/collections', async (request, response) => {
-  response.render('pages/collections');
+  const home = await client.getSingle('home');
+
+  const collections = await client.getAllByType('collection', {
+    fetchLinks: 'product.image',
+  });
+  const meta = await client.getSingle('meta');
+
+  const preloader = await client.getSingle('preloader');
+  response.render('pages/collections', {
+    collections,
+    meta,
+    home,
+    preloader,
+  });
 });
 app.get('/detail/:uid', async (request, response) => {
   const product = await client.getByUID('product', request.params.uid, {
     fetchLinks: 'collection.title',
   });
+  const preloader = await client.getSingle('preloader');
+
   const meta = await client.getSingle('meta');
-  console.log(product);
   response.render('pages/detail', {
     product,
     meta,
+    preloader,
   });
 });
 app.use((request, response) => {
