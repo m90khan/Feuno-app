@@ -32,9 +32,15 @@ const pageSize = 50;
 //   };
 // };
 const handleLinkResolver = (doc, ctx) => {
-  // if (doc.type == "page") {
-  //     return "/" + doc.uid;
-  // }
+  if (doc.type == 'product') {
+    return `/detail/${doc.slug}`;
+  }
+  if (doc.type == 'about') {
+    return `/about`;
+  }
+  if (doc.type == 'collections') {
+    return `/collections`;
+  }
   return '/';
 };
 app.listen(app.get('port'), () => {
@@ -49,56 +55,44 @@ app.listen(app.get('port'), () => {
 //   });
 // };
 app.use((request, response, next) => {
-  response.locals.ctx = {
-    prismicH,
-    handleLinkResolver,
-  };
+  const endpoint = process.env.PRISMIC_ENDPOINT;
+  response.locals.ctx = { endpoint, prismicH, handleLinkResolver };
 
-  // response.locals.ctx = {
-  //   endpoint: endpoint,
-  //   linkResolver: handleLinkResolver,
-  // };
-  // response.locals.PrismicDOM = PrismicDOM;
-
-  // Prismic.api(endpoint, {
-  //     accessToken,
-  //     request,
-  // })
-  //     .then((api) => {
-  //         request.prismic = { api };
-
-  //         next();
-  //     })
-  //     .catch((error) => {
-  //         next(error.message);
-  //     });
   next();
 });
-app.get('/', async (request, response) => {
-  const document = await client.getSingle('home');
+
+const commonRequests = async () => {
   const meta = await client.getSingle('meta');
   const preloader = await client.getSingle('preloader');
-
-  const { data: home } = document;
-
-  response.render('pages/home', {
-    home,
+  const navigation = await client.getSingle('navigation');
+  return {
     meta,
     preloader,
+    navigation,
+  };
+};
+app.get('/', async (request, response) => {
+  const home = await client.getSingle('home');
+  const commonData = await commonRequests();
+  const collections = await client.getAllByType('collection', {
+    fetchLinks: 'product.image',
+  });
+  response.render('pages/home', {
+    home,
+    collections,
+    ...commonData,
   });
 });
 
 app.get('/about', async (request, response) => {
   const document = await client.getSingle('about');
-  const meta = await client.getSingle('meta');
-  const preloader = await client.getSingle('preloader');
+  const commonData = await commonRequests();
 
   const { data: about } = document;
   console.log(about);
   response.render('pages/about', {
     about,
-    meta,
-    preloader,
+    ...commonData,
   });
 });
 app.get('/collections', async (request, response) => {
@@ -107,27 +101,23 @@ app.get('/collections', async (request, response) => {
   const collections = await client.getAllByType('collection', {
     fetchLinks: 'product.image',
   });
-  const meta = await client.getSingle('meta');
+  const commonData = await commonRequests();
 
-  const preloader = await client.getSingle('preloader');
   response.render('pages/collections', {
     collections,
-    meta,
     home,
-    preloader,
+    ...commonData,
   });
 });
 app.get('/detail/:uid', async (request, response) => {
   const product = await client.getByUID('product', request.params.uid, {
     fetchLinks: 'collection.title',
   });
-  const preloader = await client.getSingle('preloader');
+  const commonData = await commonRequests();
 
-  const meta = await client.getSingle('meta');
   response.render('pages/detail', {
     product,
-    meta,
-    preloader,
+    ...commonData,
   });
 });
 app.use((request, response) => {
