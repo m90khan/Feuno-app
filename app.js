@@ -40,17 +40,15 @@ const handleLinkResolver = (doc, ctx) => {
 app.listen(app.get('port'), () => {
   // Onboarding.trigger()
 });
-const initApi = (req) => {
-  const accessToken = process.env.PRISMIC_ACCESS_TOKEN;
-  const endpoint = process.env.PRISMIC_ENDPOINT;
-  return Prismic.getApi(endpoint, {
-    accessToken,
-    req,
-  });
-};
+// const initApi = (req) => {
+//   const accessToken = process.env.PRISMIC_ACCESS_TOKEN;
+//   const endpoint = process.env.PRISMIC_ENDPOINT;
+//   return Prismic.getApi(endpoint, {
+//     accessToken,
+//     req,
+//   });
+// };
 app.use((request, response, next) => {
-  const accessToken = process.env.PRISMIC_ACCESS_TOKEN;
-  const endpoint = process.env.PRISMIC_ENDPOINT;
   response.locals.ctx = {
     prismicH,
   };
@@ -75,7 +73,6 @@ app.use((request, response, next) => {
   //     });
   next();
 });
-
 app.get('/', async (request, response) => {
   const document = await client.getSingle('home');
   const meta = await client.getSingle('meta');
@@ -99,11 +96,19 @@ app.get('/about', async (request, response) => {
     meta,
   });
 });
-app.get('/collections', (request, response) => {
+app.get('/collections', async (request, response) => {
   response.render('pages/collections');
 });
-app.get('/detail/:uid', (request, response) => {
-  response.render('pages/detail');
+app.get('/detail/:uid', async (request, response) => {
+  const product = await client.getByUID('product', request.params.uid, {
+    fetchLinks: 'collection.title',
+  });
+  const meta = await client.getSingle('meta');
+  console.log(product);
+  response.render('pages/detail', {
+    product,
+    meta,
+  });
 });
 app.use((request, response) => {
   response.status(404);
