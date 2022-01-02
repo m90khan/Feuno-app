@@ -1,21 +1,10 @@
+@import './gallery';
+@import './content';
+@import './highlight';
 .about {
-
+}
+.about__wrapper {
 }
 
-.about__content {
-
-}
-.about {
-  @extend %page;
-
-  font-size: 100rem;
-  word-break: break-all;
-
-  &--active {
-    @extend %page--active;
-  }
-}
-
-.about__content {
-  @extend %content;
+.about__title {
 }
