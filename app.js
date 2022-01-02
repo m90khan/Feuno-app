@@ -46,14 +46,7 @@ const handleLinkResolver = (doc, ctx) => {
 app.listen(app.get('port'), () => {
   // Onboarding.trigger()
 });
-// const initApi = (req) => {
-//   const accessToken = process.env.PRISMIC_ACCESS_TOKEN;
-//   const endpoint = process.env.PRISMIC_ENDPOINT;
-//   return Prismic.getApi(endpoint, {
-//     accessToken,
-//     req,
-//   });
-// };
+
 app.use((request, response, next) => {
   const endpoint = process.env.PRISMIC_ENDPOINT;
   response.locals.ctx = { endpoint, prismicH, handleLinkResolver };
