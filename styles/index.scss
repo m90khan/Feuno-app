@@ -1,22 +1,32 @@
-// @import './utils/variables';
-// @import './utils/functions';
-// @import './utils/responsive';
-// @import './utils/mixins';
-// @import './utils/vendors';
+@import './base/reset';
 
-// @import './base/fonts';
-// @import './base/reset';
+@import './utils/variables';
+@import './utils/functions';
+@import './utils/mixins';
+@import './utils/vendors';
+@import './utils/responsive';
 
+// @import './shared/descriptions';
 // @import './shared/links';
-// @import './shared/sections';
+// @import './shared/pages';
+// @import './shared/titles';
+// @import './shared/vertical-titles';
 
-// @import './components/canvas';
-// @import './components/functionals';
-// @import './components/navigation';
+@import './base/fonts';
+@import './base/base';
+
 // @import './components/preloader';
+// @import './components/transition';
 
-@import './pages/home/home';
+// @import './layout/navigation';
 
 @import './pages/about/about';
-@import './pages/collections/collections';
-@import './pages/details/details';
+// @import './pages/about/content';
+// @import './pages/about/gallery';
+// @import './pages/about/highlight';
+
+// @import './pages/collections/collections';
+
+// @import './pages/details/details';
+
+// @import './pages/home/home';
