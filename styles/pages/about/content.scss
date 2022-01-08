@@ -155,31 +155,31 @@
     width: 60.8rem;
   }
 
-  // @include media('<=phone') {
-  //   .about__content:nth-child(3) & {
-  //     height: 91.4rem;
-  //     margin-left: 0;
-  //     width: 60.9rem;
-  //   }
+  @include media('<=phone') {
+    .about__content:nth-child(3) & {
+      height: 91.4rem;
+      margin-left: 0;
+      width: 60.9rem;
+    }
 
-  //   .about__content:nth-child(5) & {
-  //     height: 50rem;
-  //     margin-left: 0;
-  //     width: 100vw;
-  //   }
+    .about__content:nth-child(5) & {
+      height: 50rem;
+      margin-left: 0;
+      width: 100vw;
+    }
 
-  //   .about__content:nth-child(8) & {
-  //     height: 52rem;
-  //     margin-right: 0;
-  //     width: 100vw;
-  //   }
+    .about__content:nth-child(8) & {
+      height: 52rem;
+      margin-right: 0;
+      width: 100vw;
+    }
 
-  //   .about__content:nth-child(9) & {
-  //     height: 85.8rem;
-  //     margin-left: 0;
-  //     width: 60.8rem;
-  //   }
-  // }
+    .about__content:nth-child(9) & {
+      height: 85.8rem;
+      margin-left: 0;
+      width: 60.8rem;
+    }
+  }
 }
 
 .about__content__media__image {

@@ -1,12 +1,12 @@
 .about {
-  // @extend %page;
+  @extend %page;
   color: blue;
-  // background: $color-cadet-blue;
-  // color: $color-bright-gray;
+  background: $color-cadet-blue;
+  color: $color-bright-gray;
 
-  // &--active {
-  //   @extend %page--active;
-  // }
+  &--active {
+    @extend %page--active;
+  }
 }
 
 .about__wrapper {
@@ -14,15 +14,15 @@
 }
 
 .about__title {
-  // @extend %title-110;
+  @extend %title-110;
 
   margin: auto;
   max-width: 140rem;
   text-align: center;
 
-  // @include media('<phone') {
-  //   max-width: 67.7rem;
-  // }
+  @include media('<phone') {
+    max-width: 67.7rem;
+  }
 }
 
 .about__footer {
@@ -40,7 +40,7 @@
 
 .about__footer__credits {
   a {
-    // @extend %link--hidden;
+    @extend %link--hidden;
 
     &:first-child {
       margin-right: 1rem;

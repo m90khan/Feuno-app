@@ -1,53 +1,55 @@
 .detail {
   @extend %center;
-  @extend %page;
+  @extend %cover;
 
-  // background: $color-quicksand;
-  // color: $color-quarter-spanish-white;
-  transform: translateY(100%);
-  transition: opacity 0.5s 0.5s ease, transform 0s 0.5s, visibility 0.5s 0.5s ease;
+  // @extend %page;
 
-  &--active {
-    @extend %page--active;
+  background: $color-quicksand;
+  color: $color-quarter-spanish-white;
+  // transform: translateY(100%);
+  // transition: opacity 0.5s 0.5s ease, transform 0s 0.5s, visibility 0.5s 0.5s ease;
 
-    transform: translateY(0);
-    transition-delay: 0;
-  }
+  // &--active {
+  //   @extend %page--active;
 
-  @include media('<phone') {
-    height: auto;
-  }
+  //   transform: translateY(0);
+  //   transition-delay: 0;
+  // }
+
+  // @include media('<phone') {
+  //   height: auto;
+  // }
 }
 
 .detail__wrapper {
   align-items: center;
   display: flex;
-  opacity: 0;
   transition: opacity 0.4s ease;
+  // opacity: 0;
 
-  .detail--active & {
-    opacity: 1;
-  }
+  // .detail--active & {
+  //   opacity: 1;
+  // }
 
-  @include media('<phone') {
-    display: block;
-    margin: auto;
-    padding: 15rem 0 31.5rem;
-    width: 66.1rem;
-  }
+  // @include media('<phone') {
+  //   display: block;
+  //   margin: auto;
+  //   padding: 15rem 0 31.5rem;
+  //   width: 66.1rem;
+  // }
 }
 
 .detail__media {
   height: 78.2rem;
   position: relative;
-  visibility: hidden;
+  // visibility: hidden;
   width: 55.4rem;
 
-  @include media('<phone') {
-    height: 93.4rem;
-    margin: 0 auto 7.8rem;
-    width: 100%;
-  }
+  // @include media('<phone') {
+  //   height: 93.4rem;
+  //   margin: 0 auto 7.8rem;
+  //   width: 100%;
+  // }
 }
 
 .detail__media__image {
@@ -59,9 +61,9 @@
 .detail__information {
   padding-left: 8.2rem;
 
-  @include media('<phone') {
-    padding-left: 0;
-  }
+  // @include media('<phone') {
+  //   padding-left: 0;
+  // }
 }
 
 .detail__information__collection {
@@ -85,12 +87,14 @@
 .detail__information__content {
   padding-left: 18rem;
 
-  @include media('<phone') {
-    padding-left: 0;
-  }
+  // @include media('<phone') {
+  //   padding-left: 0;
+  // }
 }
 
 .detail__information__highlights {
+  @extend %description-16;
+
   margin-top: 6rem;
 }
 
@@ -109,23 +113,23 @@
   margin-right: 3.75rem;
   width: 4rem;
 
-  @include media('<phone') {
-    height: 9.2rem;
-    margin-right: 5.8rem;
-    width: 9.2rem;
-  }
+  // @include media('<phone') {
+  //   height: 9.2rem;
+  //   margin-right: 5.8rem;
+  //   width: 9.2rem;
+  // }
 }
 
 .detail__information__highlight__text {
-  @extend %description-18;
+  @extend %description-16;
 
-  overflow: hidden;
+  // overflow: hidden;
 
-  span {
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: top;
-  }
+  // span {
+  //   display: inline-block;
+  //   overflow: hidden;
+  //   vertical-align: top;
+  // }
 }
 
 .detail__information__list {
@@ -149,14 +153,14 @@
   padding-right: 2.5rem;
   width: 15rem;
 
-  @include media('<phone') {
-    padding-right: 5rem;
-  }
+  // @include media('<phone') {
+  //   padding-right: 5rem;
+  // }
 }
 
-.detail__information__item__title__text {
-  display: block;
-}
+// .detail__information__item__title__text {
+//   display: block;
+// }
 
 .detail__information__item__description {
   @extend %description-18;
@@ -164,17 +168,17 @@
   letter-spacing: 0.03rem;
   max-width: 44rem;
 
-  span {
-    display: inline-block;
-    line-height: 1;
-    overflow: hidden;
-    vertical-align: top;
-  }
+  // span {
+  //   display: inline-block;
+  //   line-height: 1;
+  //   overflow: hidden;
+  //   vertical-align: top;
+  // }
 }
 
-.detail__information__footer {
-  overflow: hidden;
-}
+// .detail__information__footer {
+//   overflow: hidden;
+// }
 
 .detail__information__link {
   @extend %link--hidden;
@@ -187,16 +191,15 @@
   margin-top: 3rem;
   width: fit-content;
 
-  &:before {
-    content: '↗';
-    font-family: $font-suisse-bp;
-    font-weight: 100;
-    margin-left: 1rem;
-    margin-top: -0.2rem;
-  }
+  // &:before {
+  //   content: '↗';
+  //   font-family: $font-suisse-bp;
+  //   font-weight: 100;
+  //   margin-left: 1rem;
+  //   margin-top: -0.2rem;
+  // }
 
   @include media('<phone') {
-
   }
 }
 
@@ -235,6 +238,6 @@
   }
 }
 
-.detail__button__icon {
-  @extend %cover;
-}
+// .detail__button__icon {
+//   @extend %cover;
+// }
