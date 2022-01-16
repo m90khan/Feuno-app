@@ -29,14 +29,20 @@ export default class Page {
   }
 
   show() {
-    GSAP.from(this.element, {
-      autoAlpha: 1,
+    return new Promise((resolve) => {
+      GSAP.from(this.element, {
+        autoAlpha: 0,
+        onComplete: resolve,
+      });
     });
   }
 
   hide() {
-    GSAP.to(this.element, {
-      autoAlpha: 0,
+    return new Promise((resolve) => {
+      GSAP.to(this.element, {
+        autoAlpha: 0,
+        onComplete: resolve,
+      });
     });
   }
 }

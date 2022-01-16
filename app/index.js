@@ -7,6 +7,7 @@ class App {
   constructor() {
     this.createContent();
     this.createPages();
+    this.addLinksEventsListeners();
   }
   createContent() {
     this.content = document.querySelector('.content');
@@ -22,6 +23,34 @@ class App {
     this.page = this.pages[this.template];
     this.page.create();
     this.page.show();
+  }
+  async onChange(url) {
+    await this.page.hide();
+    const request = await window.fetch(url);
+    if (request.status === 200) {
+      const html = await request.text();
+      const fakeDiv = document.createElement('div');
+      fakeDiv.innerHTML = html;
+      const divContent = fakeDiv.querySelector('.content');
+      this.template = divContent.getAttribute('data-template');
+      this.content.setAttribute('data-template', this.template);
+      this.content.innerHTML = divContent.innerHTML;
+      this.page = this.pages[this.template];
+      this.page.create();
+      this.page.show();
+    } else {
+      console.log('error');
+    }
+  }
+  addLinksEventsListeners() {
+    const links = document.querySelectorAll('a');
+    links.forEach((link) => {
+      link.onclick = (event) => {
+        const { href } = link;
+        event.preventDefault();
+        this.onChange(href);
+      };
+    });
   }
 }
 new App();
