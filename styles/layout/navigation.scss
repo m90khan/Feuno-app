@@ -22,10 +22,10 @@
   }
 
   @include media('<phone') {
-    height: 4.3rem;
+    height: 5rem;
     left: 5rem;
     top: 5rem;
-    width: 27.9rem;
+    width: 37.9rem;
   }
 }
 
@@ -34,7 +34,6 @@
 }
 
 .navigation__list {
-
 }
 
 .navigation__list__item {
@@ -45,7 +44,7 @@
 }
 
 .navigation__list__link {
-  @extend %link--hidden;
+  // @extend %link--hidden;
   @extend %title-24;
 
   display: block;

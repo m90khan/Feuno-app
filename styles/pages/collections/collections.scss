@@ -23,27 +23,27 @@
 }
 
 .collections__titles {
-  // @extend %vertical-titles;
-  align-items: center;
-  display: flex;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%) rotate(-90deg);
+  @extend %vertical-titles;
+  // align-items: center;
+  // display: flex;
+  // left: 50%;
+  // position: absolute;
+  // top: 50%;
+  // transform: translate(-50%, -50%) rotate(-90deg);
 }
 
 .collections__titles__wrapper {
 }
 
 .collections__titles__label {
-  @extend %description-12;
-  // @extend %vertical-titles__label;
+  @extend %vertical-titles__label;
+  // @extend %description-12;
   // height: 16rem;
-  letter-spacing: 0.1rem;
-  // position: relative;
-  text-align: center;
-  transform: rotate(90deg);
-  text-transform: uppercase;
+  // letter-spacing: 0.1rem;
+  // // position: relative;
+  // text-align: center;
+  // transform: rotate(90deg);
+  // text-transform: uppercase;
 }
 
 // .collections__titles__label__text {
@@ -51,10 +51,9 @@
 // }
 
 .collections__titles__title {
-  // @extend %vertical-titles__title;
-  @extend %title-200;
-  padding-top: 2rem;
-  // position: relative;
+  @extend %vertical-titles__title;
+  // @extend %title-200;
+  position: relative;
 
   // &:nth-child(2) {
   //   height: 28.6rem;
@@ -137,9 +136,9 @@
 .collections__content {
   @extend %cover;
 
-  // @include media('<phone') {
-  //   display: none;
-  // }
+  @include media('<phone') {
+    display: none;
+  }
 }
 
 .collections__article {
@@ -212,38 +211,38 @@
   // }
 }
 
-// .collections__mobile {
-//   bottom: 5rem;
-//   display: none;
-//   position: absolute;
+.collections__mobile {
+  bottom: 5rem;
+  display: none;
+  position: absolute;
 
-//   @include media('<phone') {
-//     display: flex;
-//   }
-// }
+  @include media('<phone') {
+    display: flex;
+  }
+}
 
-// .collections__mobile__item {
-//   padding-left: 5rem;
-//   width: 100vw;
-// }
+.collections__mobile__item {
+  padding-left: 5rem;
+  width: 100vw;
+}
 
-// .collections__mobile__item__label {
-//   font-size: 2rem;
-//   letter-spacing: 0.1rem;
-//   text-transform: uppercase;
-// }
+.collections__mobile__item__label {
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
 
-// .collections__mobile__item__title {
-//   font-family: $font-george-x;
-//   font-size: 12rem;
-// }
+.collections__mobile__item__title {
+  font-family: $font-george-x;
+  font-size: 12rem;
+}
 
-// .collections__button {
-//   height: 63.1rem;
-//   left: 50%;
-//   position: absolute;
-//   top: 50%;
-//   transform: translate(-50%, -50%);
-//   position: absolute;
-//   width: 44.7rem;
-// }
+.collections__button {
+  height: 63.1rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 44.7rem;
+}

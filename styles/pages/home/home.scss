@@ -1,15 +1,16 @@
 .home {
   @extend %center;
-  @extend %page;
+  @extend %cover;
+  // @extend %page;
 
   background: $color-contessa;
   color: $color-quarter-spanish-white;
   overflow: hidden;
   text-align: center;
 
-  &--active {
-    @extend %page--active;
-  }
+  // &--active {
+  //   @extend %page--active;
+  // }
 }
 
 .home__wrapper {
@@ -53,7 +54,7 @@
 }
 
 .home__titles__label__text {
-  @extend %vertical-titles__label__text;
+  // @extend %vertical-titles__label__text;
 }
 
 .home__titles__title {
@@ -73,7 +74,7 @@
   top: 0;
   transform: translateX(-50%);
   width: 100%;
-  visibility: hidden;
+  // visibility: hidden;
 
   @include media('<=phone') {
     padding: 0 1.5rem;
@@ -81,6 +82,8 @@
 }
 
 .home__gallery__media {
+  @extend %cover;
+
   padding: 2.5rem;
   width: 20%;
 

@@ -5,7 +5,7 @@
   background: $color-contessa;
   color: $color-quarter-spanish-white;
   text-align: center;
-  // z-index: z('preloader');
+  z-index: z('preloader');
 
   display: none;
 }
@@ -33,9 +33,9 @@
   position: absolute;
   transform: translateX(-50%);
 
-  // @include media('<phone') {
-  //   font-size: 2.4rem;
-  // }
+  @include media('<phone') {
+    font-size: 2.4rem;
+  }
 }
 
 // .preloader__number__text {

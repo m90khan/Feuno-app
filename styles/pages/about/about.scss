@@ -1,12 +1,15 @@
 .about {
-  @extend %page;
-  color: blue;
+  // @extend %page;
   background: $color-cadet-blue;
   color: $color-bright-gray;
-
-  &--active {
-    @extend %page--active;
-  }
+  // height: 100%;
+  // left: 0;
+  // position: absolute;
+  // top: 0;
+  // width: 100%;
+  // &--active {
+  //   @extend %page--active;
+  // }
 }
 
 .about__wrapper {
@@ -40,7 +43,7 @@
 
 .about__footer__credits {
   a {
-    @extend %link--hidden;
+    // @extend %link--hidden;
 
     &:first-child {
       margin-right: 1rem;

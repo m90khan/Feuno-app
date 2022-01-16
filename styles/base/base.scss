@@ -15,9 +15,9 @@ html {
   // overflow: hidden;
   // position: fixed;
 
-  // @include media('<phone') {
-  //   font-size: calc(100vw / 750 * 10);
-  // }
+  @include media('<phone') {
+    font-size: calc(100vw / 750 * 10);
+  }
 }
 
 body {
@@ -40,13 +40,13 @@ a {
 //   z-index: z('canvas');
 // }
 
-// button {
-//   background: none;
-//   border: none;
-//   color: inherit;
-//   cursor: pointer;
-//   outline: none;
-// }
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
 
 img {
   // opacity: 0;

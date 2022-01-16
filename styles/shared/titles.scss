@@ -14,7 +14,6 @@
   line-height: 1;
 
   @include media('<phone') {
-
   }
 }
 
@@ -60,9 +59,8 @@
 
 %title-200 {
   font-family: $font-george-x;
-  font-size: 20rem;
+  font-size: 18rem;
 
   @include media('<=phone') {
-
   }
 }
