@@ -78,7 +78,9 @@ export default class Page {
     this.scroll.target += deltaY;
   }
   onResize() {
-    this.scroll.limit = this.elements.wrapper.clientHeight - window.innerHeight;
+    if (this.elements.wrapper) {
+      this.scroll.limit = this.elements.wrapper.clientHeight - window.innerHeight;
+    }
   }
   update() {
     this.scroll.target = GSAP.utils.clamp(0, this.scroll.limit, this.scroll.target);
