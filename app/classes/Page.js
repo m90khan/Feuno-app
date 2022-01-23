@@ -8,10 +8,8 @@ export default class Page {
   }
   create() {
     this.element = document.querySelector(this.selector);
-    console.log('id', this.id, this.element);
     this.elements = {};
     each(this.selectorChildren, (selector, key) => {
-      console.log('selector ', selector, key);
       if (selector instanceof window.HTMLElement || selector instanceof window.NodeList) {
         this.elements[key] = selector;
       } else if (Array.isArray(selector)) {
@@ -30,10 +28,16 @@ export default class Page {
 
   show() {
     return new Promise((resolve) => {
-      GSAP.from(this.element, {
-        autoAlpha: 0,
-        onComplete: resolve,
-      });
+      GSAP.fromTo(
+        this.element,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          onComplete: resolve,
+        }
+      );
     });
   }
 

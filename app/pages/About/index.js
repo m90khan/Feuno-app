@@ -1,11 +1,9 @@
-import Page from 'components/Page';
+import Page from 'classes/Page';
 
 export default class extends Page {
   constructor() {
     super({
-      classes: {
-        active: 'about--active',
-      },
+      id: 'about',
       element: '.about',
       elements: {
         navigation: document.querySelector('.navigation'),
@@ -13,19 +11,19 @@ export default class extends Page {
       },
     });
   }
-
-  /**
-   * Animations.
-   */
-  async show(url) {
-    this.element.classList.add(this.classes.active);
-
-    return super.show(url);
-  }
-
-  async hide(url) {
-    this.element.classList.remove(this.classes.active);
-
-    return super.hide(url);
-  }
 }
+
+/**
+ * Animations.
+ */
+// async show(url) {
+//   this.element.classList.add(this.classes.active);
+
+//   return super.show(url);
+// }
+
+// async hide(url) {
+//   this.element.classList.remove(this.classes.active);
+
+//   return super.hide(url);
+// }

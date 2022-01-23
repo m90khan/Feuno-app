@@ -2,12 +2,22 @@ import About from 'pages/About';
 import Home from 'pages/Home';
 import Collections from 'pages/Collections';
 import Detail from 'pages/Detail';
+import Preloader from './components/Preloader';
 
 class App {
   constructor() {
+    this.createPreloader();
     this.createContent();
     this.createPages();
-    this.addLinksEventsListeners();
+    this.addLinkListeners();
+  }
+  createPreloader() {
+    this.preloader = new Preloader();
+    this.preloader.once('completed', this.onPreloaded.bind(this));
+  }
+  onPreloaded() {
+    this.preloader.destroy();
+    this.page.show();
   }
   createContent() {
     this.content = document.querySelector('.content');
@@ -21,8 +31,8 @@ class App {
       about: new About(),
     };
     this.page = this.pages[this.template];
+    console.log('page', this.page);
     this.page.create();
-    this.page.show();
   }
   async onChange(url) {
     await this.page.hide();
@@ -38,13 +48,15 @@ class App {
       this.page = this.pages[this.template];
       this.page.create();
       this.page.show();
+      this.addLinkListeners();
     } else {
       console.log('error');
     }
   }
-  addLinksEventsListeners() {
+  addLinkListeners() {
     const links = document.querySelectorAll('a');
     links.forEach((link) => {
+      //
       link.onclick = (event) => {
         const { href } = link;
         event.preventDefault();

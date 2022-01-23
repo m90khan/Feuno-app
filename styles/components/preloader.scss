@@ -6,22 +6,21 @@
   color: $color-quarter-spanish-white;
   text-align: center;
   z-index: z('preloader');
-
-  display: none;
 }
 
 .preloader__text {
   @extend %title-53;
 
   max-width: 67rem;
-  // opacity: 0;
-
-  // span span {
-  //   @extend %title-53;
-
-  //   display: inline-block;
-  //   transform-origin: center center 0.5em;
-  // }
+  font-size: 0;
+  span {
+    display: inline-block;
+    transform-origin: center center 0.5em;
+    overflow: hidden;
+  }
+  span span {
+    @extend %title-53;
+  }
 }
 
 .preloader__number {
@@ -38,6 +37,6 @@
   }
 }
 
-// .preloader__number__text {
-//   display: inline-block;
-// }
+.preloader__number__text {
+  display: inline-block;
+}
