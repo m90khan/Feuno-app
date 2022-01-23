@@ -9,14 +9,22 @@ class App {
     this.createPreloader();
     this.createContent();
     this.createPages();
+
     this.addLinkListeners();
+    this.addEventListeners();
+
+    this.update();
   }
+  /**
+   * Events
+   */
   createPreloader() {
     this.preloader = new Preloader();
     this.preloader.once('completed', this.onPreloaded.bind(this));
   }
   onPreloaded() {
     this.preloader.destroy();
+    this.onResize();
     this.page.show();
   }
   createContent() {
@@ -31,7 +39,6 @@ class App {
       about: new About(),
     };
     this.page = this.pages[this.template];
-    console.log('page', this.page);
     this.page.create();
   }
   async onChange(url) {
@@ -47,12 +54,31 @@ class App {
       this.content.innerHTML = divContent.innerHTML;
       this.page = this.pages[this.template];
       this.page.create();
+      this.onResize();
       this.page.show();
       this.addLinkListeners();
     } else {
       console.log('error');
     }
   }
+  onResize() {
+    if (this.page && this.page.onResize) {
+      this.page.onResize();
+    }
+  }
+  /**
+   * Loop
+   */
+  update() {
+    if (this.page && this.page.update) {
+      this.page.update();
+    }
+    this.frame = window.requestAnimationFrame(this.update.bind(this));
+  }
+
+  /**
+   * Listeners
+   */
   addLinkListeners() {
     const links = document.querySelectorAll('a');
     links.forEach((link) => {
@@ -64,10 +90,16 @@ class App {
       };
     });
   }
+  addEventListeners() {
+    window.addEventListener('resize', this.onResize.bind(this));
+  }
 }
+
 new App();
 
 console.log(
   '%c Developed by Khan - https://uxdkhan.com/',
   'background: #000; color: #fff;'
 );
+
+// create a requestAnimationFrame for the entire app

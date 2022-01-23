@@ -6,20 +6,21 @@
 }
 
 html {
-  @extend %cover;
-
   background: $color-contessa;
   color: $color-quarter-spanish-white;
   font-size: calc(100vw / 1920 * 10);
   line-height: 1;
-  // overflow: hidden;
-  // position: fixed;
+  overflow: hidden;
 
   @include media('<phone') {
     font-size: calc(100vw / 750 * 10);
   }
 }
-
+html,
+body {
+  @extend %cover;
+  position: fixed;
+}
 body {
   // @extend %cover;
   @extend %description-18;
@@ -58,9 +59,9 @@ img {
   // }
 }
 
-// .content {
-//   @extend %cover;
-// }
+.content {
+  @extend %cover;
+}
 
 // [data-animation='label'],
 // [data-animation='paragraph'],

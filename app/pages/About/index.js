@@ -6,8 +6,9 @@ export default class extends Page {
       id: 'about',
       element: '.about',
       elements: {
+        wrapper: '.about__wrapper',
         navigation: document.querySelector('.navigation'),
-        wrapper: '.about__content',
+        title: '.about__title',
       },
     });
   }
