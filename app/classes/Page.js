@@ -1,6 +1,8 @@
 import each from 'lodash/each';
 import GSAP from 'gsap';
 import Prefix from 'prefix';
+import normalizeWheel from 'normalize-wheel';
+
 export default class Page {
   constructor({ element, elements, id }) {
     this.selector = element;
@@ -74,8 +76,9 @@ export default class Page {
   // Scroll
 
   onMouseWheel(e) {
-    const { deltaY } = e;
-    this.scroll.target += deltaY;
+    const { pixelY } = normalizeWheel(e);
+    this.scroll.target += pixelY;
+    // this.scroll.target += deltaY;
   }
   onResize() {
     if (this.elements.wrapper) {
