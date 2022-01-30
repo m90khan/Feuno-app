@@ -1,12 +1,12 @@
-import each from 'lodash/each';
 import GSAP from 'gsap';
 import Prefix from 'prefix';
 import normalizeWheel from 'normalize-wheel';
-
+import Title from '../animations/Title';
+import { map, each } from 'lodash';
 export default class Page {
   constructor({ element, elements, id }) {
     this.selector = element;
-    this.selectorChildren = { ...elements };
+    this.selectorChildren = { ...elements, animationsTitles: '[data-animation="title"]' };
     this.id = id;
     this.transformPrefix = Prefix('transform');
     this.onMouseWheelEvent = this.onMouseWheel.bind(this);
@@ -41,8 +41,18 @@ export default class Page {
         }
       }
     });
+    this.createAnimations();
   }
 
+  createAnimations() {
+    console.log('this.elements.animationsTitles', this.elements.animationsTitles);
+    this.animationsTitles = map(this.elements.animationsTitles, (element) => {
+      return new Title({
+        element,
+      });
+    });
+    console.log('this.animationsTitles', this.animationsTitles);
+  }
   show() {
     return new Promise((resolve) => {
       this.animateIn = GSAP.timeline();
